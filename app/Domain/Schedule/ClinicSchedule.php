@@ -103,11 +103,11 @@ class ClinicSchedule
         int $slotDurationMinutes = 30
     ): array {
         $availableSlots = [];
-        $currentStart = $rangeStart;
+        $currentStart = clone $rangeStart; // Clonar para no modificar el original
 
         // Iterar por el rango en incrementos de slotDurationMinutes
         while ($currentStart < $rangeEnd) {
-            $currentEnd = $currentStart->modify("+{$slotDurationMinutes} minutes");
+            $currentEnd = (clone $currentStart)->modify("+{$slotDurationMinutes} minutes");
 
             // Si el slot termina después del rango, parar
             if ($currentEnd > $rangeEnd) {
