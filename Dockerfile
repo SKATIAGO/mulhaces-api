@@ -6,13 +6,7 @@ RUN apt-get update && apt-get install -y \
     curl \
     unzip \
     libzip-dev \
-    libonig-dev \
-    libxml2-dev \
-    libpng-dev \
-    libjpeg-dev \
-    libfreetype6-dev \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install pdo pdo_mysql zip mbstring exif pcntl bcmath gd
+    && docker-php-ext-install pdo pdo_mysql zip
 
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
