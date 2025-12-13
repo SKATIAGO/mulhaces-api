@@ -16,6 +16,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/**
+ * Health Check - Verifica que la API está funcionando
+ */
+Route::get('/', function () {
+    return response()->json([
+        'message' => 'Dental Clinic API',
+        'status' => 'running',
+        'version' => '1.0.0',
+        'timestamp' => now()->toIso8601String(),
+    ]);
+});
+
 // Ruta de autenticación (Sanctum) - descomentada para uso futuro
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
