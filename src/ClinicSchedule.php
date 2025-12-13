@@ -36,22 +36,6 @@ class ClinicSchedule
             // Dos intervalos [A_start, A_end] y [B_start, B_end] se solapan SI:
             // A_start < B_end AND B_start < A_end
             //
-            // Visualización:
-            // Caso 1: Nueva cita empieza durante una existente
-            //   Existente: |---------|
-            //   Nueva:          |---------|  ❌ CONFLICTO
-            //
-            // Caso 2: Nueva cita termina durante una existente  
-            //   Existente:     |---------|
-            //   Nueva:     |---------|      ❌ CONFLICTO
-            //
-            // Caso 3: Nueva cita envuelve completamente a una existente
-            //   Existente:   |-----|
-            //   Nueva:     |-----------|    ❌ CONFLICTO
-            //
-            // Caso 4: Citas consecutivas (OK)
-            //   Existente: |---------|
-            //   Nueva:                |------|  ✅ OK (no se solapan)
             
             if ($start < $appointmentEnd && $appointmentStart < $end) {
                 // ¡Conflicto detectado! El slot NO está disponible
